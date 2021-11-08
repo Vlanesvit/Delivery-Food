@@ -7,12 +7,14 @@ const cart = () => {
   const clearCartButton = modalCart.querySelector('.clear-cart');
   const modalPriceTag = modalCart.querySelector('.modal-pricetag');
 
+  // Отчистка корзины
   const resetCart = () => {
     body.innerHTML = '';
     localStorage.removeItem('cart');
     modalCart.classList.remove('is-open');
   };
 
+  // Функция прибавления количества блюд
   const incrementCount = (id) => {
     const cartArray = JSON.parse(localStorage.getItem('cart'));
 
@@ -28,6 +30,7 @@ const cart = () => {
     renderItems(cartArray);
   };
 
+  // Функция убавления количества блюд
   const decrementCount = (id) => {
     const cartArray = JSON.parse(localStorage.getItem('cart'));
 
@@ -35,7 +38,6 @@ const cart = () => {
       if (item.id === id) {
         item.count = item.count > 0 ? item.count - 1 : 0;
       }
-
       return item;
     });
 
@@ -43,6 +45,7 @@ const cart = () => {
     renderItems(cartArray);
   };
 
+  // Функция рендера блюд в корзину
   const renderItems = (data) => {
     body.innerHTML = '';
 
@@ -50,6 +53,7 @@ const cart = () => {
       const cartElem = document.createElement('div');
       cartElem.classList.add('food-row');
 
+      // Строка блюда
       cartElem.innerHTML = `
         <span class="food-name">${name}</span>
         <strong class="food-price">${price} ₽</strong>
@@ -63,9 +67,11 @@ const cart = () => {
     });
   };
 
+  // Тело модального окна
   body.addEventListener('click', (e) => {
     e.preventDefault();
 
+    // Делегирование клика
     if (e.target.classList.contains('btn-inc')) {
       incrementCount(e.target.dataset.index);
     } else if (e.target.classList.contains('btn-dec')) {
@@ -73,10 +79,12 @@ const cart = () => {
     }
   });
 
+  // Кнопка очистки корзины
   clearCartButton.addEventListener('click', () => {
     resetCart();
   });
 
+  // Кнопка отправки
   buttonSend.addEventListener('click', () => {
     const cartArray = localStorage.getItem('cart');
 
@@ -94,6 +102,7 @@ const cart = () => {
       });
   });
 
+  // Кнопка открытия модального окна и проверка на присутствие блюд в корзине
   buttonCart.addEventListener('click', () => {
     if (localStorage.getItem('cart')) {
       renderItems(JSON.parse(localStorage.getItem('cart')));

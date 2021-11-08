@@ -9,6 +9,9 @@ const menu = () => {
   const changeTitle = (restaurant) => {
     const sectionHeading = document.querySelector('.section-heading');
 
+    // Изменение Title
+    document.title = restaurant.name + ' ' + '— доставка еды на дом';
+
     // Заголовок страницы ресторана
     sectionHeading.innerHTML = `
       <h2 class="section-title restaurant-title">${restaurant.name}</h2>
