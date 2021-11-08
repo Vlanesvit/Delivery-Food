@@ -51,7 +51,7 @@ const menu = () => {
 
       // Карточка блюда
       card.innerHTML = `
-        <img src="${image}" alt="${name}" class="card-image" />
+        <img src="../${image}" alt="${name}" class="card-image" />
         <div class="card-text">
           <div class="card-heading">
             <h3 class="card-title card-title-reg">${name}</h3>
