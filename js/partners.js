@@ -6,7 +6,7 @@ const partners = () => {
       const { image, kitchen, name, price, products, stars, time_of_delivery } =
         item;
       const a = document.createElement('a');
-      a.setAttribute('href', '/restaurant.html');
+      a.setAttribute('href', 'restaurant/restaurant.html');
       a.classList.add('card', 'card-restaurant');
 
       // Получаем значение dataset
@@ -36,7 +36,7 @@ const partners = () => {
 
         // Проверка на авторизованность пользователя перед переходом к странице с меню
         if (localStorage.getItem('user')) {
-          window.location.href = '/restaurant.html';
+          window.location.href = 'restaurant/restaurant.html';
         } else {
           modalAuth.style.display = 'flex';
         }
