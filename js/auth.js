@@ -1,5 +1,4 @@
-const auth = () => {
-  const buttonAuth = document.querySelector('.button-auth');
+const buttonAuth = document.querySelector('.button-auth');
   const buttonCart = document.querySelector('.button-cart');
   const buttonOut = document.querySelector('.button-out');
   const userName = document.querySelector('.user-name');
@@ -86,6 +85,3 @@ const auth = () => {
 
     return errorForm;
   };
-};
-
-auth();
