@@ -1,10 +1,6 @@
 const menu = () => {
   const cardsMenu = document.querySelector('.cards-menu');
 
-  const cartArray = localStorage.getItem('cart')
-    ? JSON.parse(localStorage.getItem('cart'))
-    : [];
-
   // Функция изменения заголовка ресторана на странице меню
   const changeTitle = (restaurant) => {
     const sectionHeading = document.querySelector('.section-heading');
@@ -27,6 +23,10 @@ const menu = () => {
 
   // Функция добавления в корзину
   const addToCart = (cartItem) => {
+    const cartArray = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart'))
+      : [];
+
     // Проверка на присутствие блюда в корзине и увеличение количества, если есть.
     if (cartArray.some((item) => item.id === cartItem.id)) {
       cartArray.map((item) => {
